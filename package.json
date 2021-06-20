@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./functions/twitter-server.js"
+    "start": "node ./functions/twitter-server.js",
+    "build": "netlify-lambda build express" 
   },
   "repository": {
     "type": "git",

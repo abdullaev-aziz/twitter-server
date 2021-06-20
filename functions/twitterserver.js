@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const serverless = require('serverless-http')
+const serverless = require("serverless-http");
 const PORT = process.env.PORT || 5000;
 
 const client = new Twitter({
@@ -34,10 +34,9 @@ app.get("/twitter/user/search", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  /* eslint-disable no-console */
-  console.log("listening on port " + PORT + "...");
-  /* eslint-enable no-console */
-});
 
-module.exports.handler = serverless(app);
+const handler = serverless(app);
+module.exports.handler = async (event, context) => {
+  const result = await handler(event, context);
+  return result;
+};
